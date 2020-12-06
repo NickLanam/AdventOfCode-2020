@@ -15,14 +15,7 @@ const s2 = ppts.filter(ppt =>
   Number(ppt.iyr) >= 2010 && Number(ppt.iyr <= 2020) &&
   Number(ppt.eyr) >= 2020 && Number(ppt.eyr <= 2030) &&
   ppt.hgt && validHeight(ppt.hgt) &&
-  /^#[0-9a-f]{6}$/.test(ppt.hcl) && ['amb',
-    'blu',
-    'brn',
-    'gry',
-    'grn',
-    'hzl',
-    'oth',
-  ].includes(ppt.ecl) &&
+  /^#[0-9a-f]{6}$/.test(ppt.hcl) && ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth'].includes(ppt.ecl) &&
   /^\d{9}$/.test(ppt.pid));
 
 console.log('Star 1: ', s1.length);
