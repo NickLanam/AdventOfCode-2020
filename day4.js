@@ -1,4 +1,4 @@
-const fs = require('fs');
+const { getInput } = require('./utils');
 
 const validHeight = h => {
   const where = h.split ``.findIndex(c => /[a-z]/.test(c));
@@ -7,8 +7,13 @@ const validHeight = h => {
   return metric ? n >= 150 && n <= 193 : n >= 59 && n <= 76;
 }
 
-const raw = fs.readFileSync(`./input/day4.txt`);
-const ppts = raw.toString().split('\n\n').filter(l => l).map(ppt => ppt.split(/\s+/g).reduce((a, c) => ({...a, [c.split(':')[0]]: c.split(':')[1] }), {}));
+const ppts = getInput(4, false, '\n\n')
+  .map(ppt => ppt
+    .split(/\s+/g)
+    .reduce((a, c) => ({
+      ...a,
+      [c.split(':')[0]]: c.split(':')[1]
+    }), {}));
 const s1 = ppts.filter(ppt => ppt.byr && ppt.iyr && ppt.eyr && ppt.hgt && ppt.hcl && ppt.ecl && ppt.pid);
 const s2 = ppts.filter(ppt =>
   Number(ppt.byr) >= 1920 && Number(ppt.byr <= 2002) &&

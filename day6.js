@@ -1,6 +1,6 @@
-const fs = require('fs');
+const { getInput } = require('./utils');
 
-const groups = fs.readFileSync(`./input/day6.txt`).toString().split('\n\n').map(l => l.trim()).filter(l => l);
+const groups = getInput(6, false, '\n\n');
 
 const day6star1 = groups
   .map(g => [
